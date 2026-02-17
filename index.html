@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enervit Athletes Guide 2026 | Spolupráce s ambasádory</title>
+    <meta name="description" content="Připoj se k týmu Enervit. Průvodce spoluprací pro ambasádory a sportovce.">
+    <style>
+        :root {
+            --enervit-red: #E30613;
+            --enervit-dark: #1a1a1a;
+            --enervit-white: #ffffff;
+            --enervit-light: #f5f5f5;
+            --enervit-gray: #666666;
+            --section-padding: 80px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--enervit-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--enervit-red);
+            padding: 12px 0;
+            transition: box-shadow 0.3s;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--enervit-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--enervit-red);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--enervit-red);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav-hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--enervit-dark);
+            transition: 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--enervit-dark) 0%, #2a2a2a 100%);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+            opacity: 0.25;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(26, 26, 26, 0.6) 0%,
+                rgba(26, 26, 26, 0.85) 50%,
+                rgba(227, 6, 19, 0.3) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 120px 24px 80px;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--enervit-red);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--enervit-red);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--enervit-red);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(227, 6, 19, 0.4);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(227, 6, 19, 0.5);
+        }
+
+        .hero-cta svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: bounce 2s infinite;
+        }
+
+        .hero-scroll svg {
+            width: 28px;
+            height: 28px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-number {
+            display: inline-block;
+            background: var(--enervit-red);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            line-height: 40px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--enervit-dark);
+        }
+
+        .section-header p {
+            color: var(--enervit-gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== INTRO ===== */
+        .intro {
+            padding: var(--section-padding);
+            background: var(--enervit-white);
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .intro-text h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .intro-text h2 span {
+            color: var(--enervit-red);
+        }
+
+        .intro-text p {
+            color: var(--enervit-gray);
+            font-size: 1.05rem;
+            margin-bottom: 16px;
+        }
+
+        .intro-image {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .intro-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--enervit-red);
+        }
+
+        /* ===== PILLARS ===== */
+        .pillars {
+            padding: var(--section-padding);
+            background: var(--enervit-light);
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .pillar-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--enervit-red);
+        }
+
+        .pillar-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(227, 6, 19, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .pillar-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--enervit-red);
+        }
+
+        .pillar-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .pillar-card p {
+            color: var(--enervit-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .pillar-card ul {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .pillar-card ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: var(--enervit-gray);
+            font-size: 0.93rem;
+        }
+
+        .pillar-card ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 8px;
+            height: 8px;
+            background: var(--enervit-red);
+            border-radius: 50%;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            padding: var(--section-padding);
+            background: var(--enervit-dark);
+        }
+
+        .gallery .section-header h2 {
+            color: white;
+        }
+
+        .gallery .section-header p {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(227, 6, 19, 0.3), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* ===== SOCIAL ===== */
+        .social {
+            padding: var(--section-padding);
+            background: var(--enervit-white);
+        }
+
+        .social-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .social-profiles {
+            background: var(--enervit-light);
+            border-radius: 16px;
+            padding: 40px;
+        }
+
+        .social-profiles h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            text-decoration: none;
+            color: var(--enervit-dark);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .social-link:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .social-link-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .social-link-icon.ig {
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .social-link-icon.fb {
+            background: #1877F2;
+        }
+
+        .social-link-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .social-link-info strong {
+            display: block;
+            font-size: 1rem;
+        }
+
+        .social-link-info span {
+            font-size: 0.85rem;
+            color: var(--enervit-gray);
+        }
+
+        .social-tips {
+            padding: 40px;
+        }
+
+        .social-tips h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .tip-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .tip-number {
+            width: 36px;
+            height: 36px;
+            background: var(--enervit-red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .tip-item h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .tip-item p {
+            font-size: 0.9rem;
+            color: var(--enervit-gray);
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--enervit-red) 0%, #c5050f 100%);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.15rem;
+            max-width: 500px;
+            margin: 0 auto 36px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--enervit-red);
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--enervit-dark);
+            color: rgba(255, 255, 255, 0.5);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer img {
+            height: 32px;
+            margin-bottom: 16px;
+            filter: brightness(0) invert(1);
+        }
+
+        footer p {
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--enervit-red);
+            text-decoration: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px 24px;
+                gap: 16px;
+                border-bottom: 3px solid var(--enervit-red);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .intro-grid,
+            .social-content {
+                grid-template-columns: 1fr;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-bg {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .pillar-card {
+                padding: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <img src="assets/enervit-logo.png" alt="Enervit">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#intro">O spolupráci</a></li>
+                <li><a href="#pillars">Jak spolupracovat</a></li>
+                <li><a href="#gallery">Galerie</a></li>
+                <li><a href="#social">Sociální sítě</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+            <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="assets/gravel-rider.png" alt="">
+            <img src="assets/hockey-player.png" alt="">
+            <img src="assets/mtb-forest.png" alt="">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Athletes Guide 2026</div>
+            <h1>Staň se součástí<br>týmu <span>Enervit</span></h1>
+            <p>Průvodce spoluprací pro ambasádory. Společně budujeme komunitu sportovců, kteří věří v sílu správné výživy.</p>
+            <a href="#pillars" class="hero-cta">
+                Zjisti více
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </a>
+        </div>
+        <div class="hero-scroll">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="intro" id="intro">
+        <div class="container">
+            <div class="intro-grid">
+                <div class="intro-text">
+                    <h2>Vítej v týmu <span>Enervit</span></h2>
+                    <p>Tento dokument slouží jako vodítko pro naši společnou komunikaci. Naším cílem je, aby propojení tvého sportovního výkonu a značky Enervit působilo přirozeně, odborně a autenticky.</p>
+                    <p>Tvůj web je tvou digitální vizitkou. Chceme, aby na něm byla spolupráce s Enervitem jasně patrná a přínosná pro tvé fanoušky i pro tebe.</p>
+                </div>
+                <div class="intro-image">
+                    <img src="assets/hero-cyclists.png" alt="Enervit ambasadoři">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PILLARS -->
+    <section class="pillars" id="pillars">
+        <div class="container">
+            <div class="section-header">
+                <h2>Jak spolu spolupracujeme</h2>
+                <p>4 klíčové oblasti, ve kterých společně budujeme značku i tvoje jméno</p>
+            </div>
+            <div class="pillars-grid">
+                <!-- 1. Web & Blog -->
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                        </svg>
+                    </div>
+                    <h3>1. Osobní web a blog</h3>
+                    <p>Tvůj web je tvou digitální vizitkou. Spolupráce s Enervitem by na něm měla být jasně viditelná.</p>
+                    <ul>
+                        <li>Umístění loga Enervit s proklikem na enervit.cz</li>
+                        <li>V reportech ze závodů zmínka o použitých produktech</li>
+                        <li>Tipy a osobní zkušenosti s produkty pro ostatní sportovce</li>
+                    </ul>
+                </div>
+
+                <!-- 2. Social -->
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </div>
+                    <h3>2. Facebook a Instagram</h3>
+                    <p>Sociální sítě jsou o aktuálnosti a emocích. Pomoz nám budovat komunitu přirozených příspěvků.</p>
+                    <ul>
+                        <li>Pravidelné fotky s produkty průběžně celou sezónu</li>
+                        <li>Označování profilů @enervit_czsk (IG) a @sportujlepe (FB)</li>
+                        <li>Reels a videa přímo z místa dění</li>
+                        <li>Sdílení novinek, soutěží a seminářů</li>
+                    </ul>
+                </div>
+
+                <!-- 3. Equipment -->
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                        </svg>
+                    </div>
+                    <h3>3. Vybavení a reprezentace</h3>
+                    <p>Jako ambasador reprezentuješ značku přímo v terénu a na bedně. Tvé vybavení je klíčové.</p>
+                    <ul>
+                        <li>Logo na závodním i tréninkovém oblečení</li>
+                        <li>Branding na vybavení (helma, kolo, loď, láhve)</li>
+                        <li>Bidon Enervit u stupňů vítězů</li>
+                    </ul>
+                </div>
+
+                <!-- 4. Content & PR -->
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3>4. Content a PR spolupráce</h3>
+                    <p>Tvá data a fotky jsou pro nás cenné pro další propagaci tvého jména i značky Enervit.</p>
+                    <ul>
+                        <li>Pravidelné zasílání fotek a informací z klíčových závodů</li>
+                        <li>Cca 10 kvalitních fotek s produkty pro PR potřeby</li>
+                        <li>Zmínky o Enervitu v rozhovorech pro média</li>
+                        <li>Účast na videích, focení nebo odborných seminářích</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Naši sportovci v akci</h2>
+                <p>Autentické momenty ze závodů, tréninků a každodenního sportu</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/gravel-rider.png" alt="Gravel cyklista">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/gel-bike.png" alt="Enervit gel na kole">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/hockey-player.png" alt="Hokejista s Enervit bidonem">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/mtb-forest.png" alt="MTB v lese">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL -->
+    <section class="social" id="social">
+        <div class="container">
+            <div class="section-header">
+                <h2>Kde nás najdeš</h2>
+                <p>Propoj svůj profil s našimi účty a budujme komunitu společně</p>
+            </div>
+            <div class="social-content">
+                <div class="social-profiles">
+                    <h3>Naše profily</h3>
+                    <a href="https://www.instagram.com/enervit_czsk" target="_blank" rel="noopener" class="social-link">
+                        <div class="social-link-icon ig">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                            </svg>
+                        </div>
+                        <div class="social-link-info">
+                            <strong>@enervit_czsk</strong>
+                            <span>Instagram</span>
+                        </div>
+                    </a>
+                    <a href="https://www.facebook.com/sportujlepe" target="_blank" rel="noopener" class="social-link">
+                        <div class="social-link-icon fb">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </div>
+                        <div class="social-link-info">
+                            <strong>@sportujlepe</strong>
+                            <span>Facebook</span>
+                        </div>
+                    </a>
+                    <a href="https://www.enervit.cz" target="_blank" rel="noopener" class="social-link">
+                        <div class="social-link-icon" style="background: var(--enervit-red);">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/>
+                            </svg>
+                        </div>
+                        <div class="social-link-info">
+                            <strong>enervit.cz</strong>
+                            <span>Oficiální web</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="social-tips">
+                    <h3>Tipy pro příspěvky</h3>
+                    <div class="tip-item">
+                        <div class="tip-number">1</div>
+                        <div>
+                            <h4>Buď autentický</h4>
+                            <p>Fotky nemusí být strojené. Stačí zátiší s výbavou před závodem, fotka z tréninku nebo momentka s bidonem v ruce.</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-number">2</div>
+                        <div>
+                            <h4>Publikuj pravidelně</h4>
+                            <p>Sdílej fotky s Enervitem průběžně celou sezónu, nejen jednorázově. Konzistentnost je klíčová.</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-number">3</div>
+                        <div>
+                            <h4>Označuj profily</h4>
+                            <p>U každého příspěvku s Enervitem nezapomeň označit @enervit_czsk na Instagramu a @sportujlepe na Facebooku.</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-number">4</div>
+                        <div>
+                            <h4>Toč Reels</h4>
+                            <p>Reels hýbou světem sociálních sítí. Videa přímo z místa dění mají obrovský dosah.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Připraven spolupracovat?</h2>
+            <p>Kontaktuj nás a staň se součástí týmu sportovců, kteří důvěřují Enervitu.</p>
+            <a href="mailto:info@enervit.cz" class="cta-button">
+                Napiš nám
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <img src="assets/enervit-logo.png" alt="Enervit">
+            <p>&copy; 2026 Enervit &mdash; Pro lepší sportovní výkon. <a href="https://www.enervit.cz" target="_blank" rel="noopener">enervit.cz</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile menu
+                    document.getElementById('navLinks').classList.remove('open');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

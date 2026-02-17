@@ -1,0 +1,9 @@
+# Source PDFs (not needed for deployment)
+*.pdf
+
+# Extracted images (raw)
+images/
+
+# OS files
+.DS_Store
+Thumbs.db
