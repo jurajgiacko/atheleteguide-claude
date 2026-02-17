@@ -1,5 +1,8 @@
 # Source PDFs (not needed for deployment)
-*.pdf
+Athletes*.pdf
+
+# Generated PDF is tracked (for sales team)
+!Enervit_Athletes_Guide_2026.pdf
 
 # Extracted images (raw)
 images/
